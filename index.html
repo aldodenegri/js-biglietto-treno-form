@@ -9,14 +9,15 @@
 </head>
 
 <body>
-    <form action="/action_page.php">
+    <form>
         <label for="NC">Nome e Cognome:</label>
         <input type="text" placeholder="Aldo De Negri" id="NC" name="NC"><br><br>
         <label for="N">Km da Percorrere:</label>
-        <input type="number" placeholder="km" name="km"><br><br>
-        <input type="submit" value="Invia">
-        <input type="button" value="Annulla">
+        <input type="number" placeholder="km" id="km" name="km"><br><br>
+        <input type="submit" id="submit" value="Invia">
+        <input type="button" id="cancel" value="Annulla">
     </form>
+    <script src="main.js"></script>
 </body>
 
 </html>
