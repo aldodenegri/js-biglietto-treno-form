@@ -7,18 +7,41 @@ document.getElementById("cancel").addEventListener("click", cancelInput);
 const prezzoKm = 0.21;
 
 function storeData() {
-    
-    let nc = document.getElementById("NC").value;
-    let km = document.getElementById("km").value;
-    let eta = document.getElementById("eta").value;
+
+    const nc = document.getElementById("NC").value.trim();
+    const km = parseFloat(document.getElementById("km").value);
+    const eta = parseInt(document.getElementById("eta").value);
+
+    if (!nc || isNaN(km) || isNaN(eta) || km <= 0 || eta <= 0) {
+        alert("Compila tutti i campi correttamente!");
+        return;
+    }
+
     let prezzoTotale = prezzoKm * km;
     let prezzoScontato = prezzoTotale;
+    let sconto = "";
+
     if (eta < 18) {
-        prezzoScontato = prezzoTotale * 0.8; // 20% di sconto
+        prezzoScontato = prezzoTotale * 0.8;
+        sconto = "Sconto 20% (Minorenne)";
     } else if (eta >= 65) {
-        prezzoScontato = prezzoTotale * 0.6; // 40% di sconto
+        prezzoScontato = prezzoTotale * 0.6;
+        sconto = "Sconto 40% (Over 65)";
+    } else {
+        sconto = "Prezzo pieno";
     }
-    console.log(nc + " " + km + " " + prezzoScontato.toFixed(2));
+
+    document.getElementById("values").innerHTML = `
+        <h3>Biglietto Treno</h3>
+        <ul>
+            <li><strong>Passeggero:</strong> ${nc}</li>
+            <li><strong>Distanza:</strong> ${km} km</li>
+            <li><strong>Età:</strong> ${eta} anni</li>
+            <li><strong>Sconto applicato:</strong> ${sconto}</li>
+            <li><strong>Prezzo finale:</strong> €${prezzoScontato.toFixed(2)}</li>
+        </ul>
+    `;
+    console.log(nc, km, eta, "€" + prezzoScontato.toFixed(2));
 }
 
 function cancelInput() {
