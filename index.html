@@ -5,21 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Train Ticket</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <form>
-        <label for="NC">Nome e Cognome:</label>
-        <input type="text" placeholder="Aldo De Negri" id="NC" name="NC"><br><br>
-        <label for="km">Km da Percorrere:</label>
-        <input type="number" placeholder="km" id="km" name="km"><br><br>
-        <label for="eta">Età:</label>
-        <input type="number" placeholder="18" id="eta" name="eta"><br><br>
-        <input type="submit" id="submit" value="Invia">
-        <input type="button" id="cancel" value="Annulla">
-    </form>
-    <div id="values"></div>
+    <div class="container mt-5">
+
+        <form class="row g-3 text-center">
+            <div class="col-md-4">
+                <label for="NC" class="form-label">Nome e Cognome</label>
+                <input type="text" class="form-control" placeholder="Aldo De Negri" id="NC" name="NC">
+            </div>
+
+            <div class="col-md-4">
+                <label for="km" class="form-label">Km da Percorrere</label>
+                <input type="number" class="form-control" placeholder="es. 100" id="km" name="km" min="1">
+            </div>
+
+            <div class="col-md-4">
+                <label for="eta" class="form-label">Età</label>
+                <input type="number" class="form-control" placeholder="18" id="eta" name="eta" min="0" max="120">
+            </div>
+
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary me-2" id="submit">Genera Biglietto</button>
+                <button type="button" class="btn btn-secondary" id="cancel">Annulla</button>
+            </div>
+        </form>
+
+        <div id="values" class="mt-4 p-3 border rounded bg-light d-none d-flex justify-content-between"></div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 
